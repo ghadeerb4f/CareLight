@@ -27,7 +27,7 @@
 
 //   const handleSubmit = async () => {
 //     setError(null);
-    
+
 //     try {
 //       await register(email, password, doctorOrPatient, doctorName, department);
 //     } catch (error) {
@@ -164,7 +164,7 @@ import Spacer from "../../components/Spacer";
 import ThemedButton from "../../components/ThemedButton";
 import ThemedTextInput from "../../components/ThemedTextInput";
 import { Colors } from "../../constants/Colors";
-import { SelectList } from 'react-native-dropdown-select-list';
+import { SelectList } from "react-native-dropdown-select-list";
 function Register() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -173,18 +173,13 @@ function Register() {
   const [error, setError] = useState(null);
   const [doctorOrPatient, setDoctorOrPatient] = useState(false);
   const { register } = useUser();
-
+  // all done
   const data = [
-    // { key: '1', value: 'Cardiology' },
-    // { key: '2', value: 'Neurology' },
-    // { key: '3', value: 'Pediatrics' },
-    // { key: '4', value: 'Orthopedics' },
-    // { key: '5', value: 'Dermatology' },
-    { key: '1', value: 'Cardiology' },
-    { key: '2', value: 'Child Care' },
-    { key: '3', value: 'Pediatrics' },
-    { key: '4', value: 'Otolaryngology' },
-    { key: '5', value: 'Pulmonology' },
+    { key: "1", value: "Cardiology" },
+    { key: "2", value: "Otolaryngology" },
+    { key: "3", value: "Child Care" },
+    { key: "4", value: "Ophthalmology" },
+    { key: "5", value: "Pulmonology" },
   ];
 
   const handleSubmit = async () => {
@@ -214,7 +209,12 @@ function Register() {
 
         <Spacer />
         <ThemedTextInput
-          style={{ marginBottom: 20, width: "80%", borderColor: "#6749A4", borderWidth: 2 }}
+          style={{
+            marginBottom: 20,
+            width: "80%",
+            borderColor: "#6749A4",
+            borderWidth: 2,
+          }}
           placeholder="Email"
           value={email}
           onChangeText={setEmail}
@@ -222,7 +222,12 @@ function Register() {
         />
 
         <ThemedTextInput
-          style={{ marginBottom: 20, width: "80%", borderColor: "#6749A4", borderWidth: 2 }}
+          style={{
+            marginBottom: 20,
+            width: "80%",
+            borderColor: "#6749A4",
+            borderWidth: 2,
+          }}
           placeholder="Password"
           value={password}
           onChangeText={setPassword}
@@ -232,7 +237,12 @@ function Register() {
         {doctorOrPatient && (
           <>
             <ThemedTextInput
-              style={{ marginBottom: 20, width: "80%", borderColor: "#6749A4", borderWidth: 2 }}
+              style={{
+                marginBottom: 20,
+                width: "80%",
+                borderColor: "#6749A4",
+                borderWidth: 2,
+              }}
               placeholder="Doctor Name"
               value={doctorName}
               onChangeText={setDoctorName}
@@ -243,24 +253,43 @@ function Register() {
               data={data}
               save="value"
               placeholder="Select Department"
-              boxStyles={{ marginBottom: 20, width: "80%", borderColor: "#6749A4", borderWidth: 2 }}
+              boxStyles={{
+                marginBottom: 20,
+                width: "80%",
+                borderColor: "#6749A4",
+                borderWidth: 2,
+              }}
             />
           </>
         )}
 
         <ThemedView style={styles.doctorpatient}>
-          <ThemedButton onPress={patient} style={{ margin: 10, backgroundColor: doctorOrPatient ? "gray" : Colors.primary, transform: [{ scale: !doctorOrPatient ? 1.1 : 1 }] }}>
-            <Text style={{ color: '#f2f2f2' }}>Patient</Text>
+          <ThemedButton
+            onPress={patient}
+            style={{
+              margin: 10,
+              backgroundColor: doctorOrPatient ? "gray" : Colors.primary,
+              transform: [{ scale: !doctorOrPatient ? 1.1 : 1 }],
+            }}
+          >
+            <Text style={{ color: "#f2f2f2" }}>Patient</Text>
           </ThemedButton>
 
-          <ThemedButton onPress={doctor} style={{ margin: 10, backgroundColor: !doctorOrPatient ? "gray" : Colors.primary, transform: [{ scale: doctorOrPatient ? 1.1 : 1 }] }}>
-            <Text style={{ color: '#f2f2f2' }}>Doctor</Text>
+          <ThemedButton
+            onPress={doctor}
+            style={{
+              margin: 10,
+              backgroundColor: !doctorOrPatient ? "gray" : Colors.primary,
+              transform: [{ scale: doctorOrPatient ? 1.1 : 1 }],
+            }}
+          >
+            <Text style={{ color: "#f2f2f2" }}>Doctor</Text>
           </ThemedButton>
         </ThemedView>
 
         <Spacer />
         <ThemedButton onPress={handleSubmit}>
-          <Text style={{ color: '#f2f2f2' }}>Register</Text>
+          <Text style={{ color: "#f2f2f2" }}>Register</Text>
         </ThemedButton>
 
         <Spacer />
@@ -268,9 +297,7 @@ function Register() {
 
         <Spacer height={10} />
         <Link href="/login" replace>
-          <ThemedText style={{ textAlign: "center" }}>
-            Login instead
-          </ThemedText>
+          <ThemedText style={{ textAlign: "center" }}>Login instead</ThemedText>
         </Link>
       </ThemedView>
     </TouchableWithoutFeedback>
@@ -309,26 +336,27 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   title: {
-    textAlign:'center',
-    color:'#6749A4',
+    textAlign: "center",
+    color: "#6749A4",
     fontSize: 34,
     marginBottom: 30,
-    fontWeight:'bold'
+    fontWeight: "bold",
   },
   error: {
     color: Colors.warning,
     padding: 10,
-    backgroundColor: '#f5c1c8',
+    backgroundColor: "#f5c1c8",
     borderColor: Colors.warning,
     borderWidth: 1,
     borderRadius: 6,
     margin: 10,
-  }
-  ,doctorpatient:{
-    flexDirection : "row",
-    alignContent : "center",
-    justifyContent : "center",
-  }})
+  },
+  doctorpatient: {
+    flexDirection: "row",
+    alignContent: "center",
+    justifyContent: "center",
+  },
+});
